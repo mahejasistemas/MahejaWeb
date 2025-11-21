@@ -69,27 +69,33 @@ const WeatherWidget = () => {
     return (
         <div className={`weather-widget-container ${isOpen ? 'open' : 'closed'}`}>
             <div className="weather-toggle" onClick={toggleWidget}>
-                <span className="weather-icon">{icon}</span>
-                <span className="weather-temp">{currentTemp}°C</span>
+                <span className="toggle-icon">{icon}</span>
+                <span className="toggle-text">Clima</span>
             </div>
 
             <div className="weather-content">
-                <div className="weather-header">
-                    <h3>Veracruz</h3>
-                    <p className="weather-desc">Hoy</p>
+                <div className="weather-main">
+                    <span className="weather-main-icon">{icon}</span>
+                    <div className="weather-main-info">
+                        <span className="weather-temp-big">{currentTemp}°</span>
+                        <span className="weather-location">Veracruz, MX</span>
+                    </div>
                 </div>
-                <div className="weather-details">
-                    <div className="weather-detail-item">
-                        <span>Mín</span>
-                        <strong>{minTemp}°C</strong>
+
+                <div className="weather-divider"></div>
+
+                <div className="weather-grid">
+                    <div className="weather-item">
+                        <span className="label">Mín</span>
+                        <span className="value">{minTemp}°</span>
                     </div>
-                    <div className="weather-detail-item">
-                        <span>Máx</span>
-                        <strong>{maxTemp}°C</strong>
+                    <div className="weather-item">
+                        <span className="label">Máx</span>
+                        <span className="value">{maxTemp}°</span>
                     </div>
-                    <div className="weather-detail-item">
-                        <span>Viento</span>
-                        <strong>{weather?.current_weather?.windspeed} km/h</strong>
+                    <div className="weather-item">
+                        <span className="label">Viento</span>
+                        <span className="value">{weather?.current_weather?.windspeed} <small>km/h</small></span>
                     </div>
                 </div>
             </div>

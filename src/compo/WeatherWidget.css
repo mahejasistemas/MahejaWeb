@@ -2,128 +2,158 @@
     position: fixed;
     top: 50%;
     right: 0;
-    transform: translateY(-50%) translateX(calc(100% - 50px));
-    /* Default closed state: shifted right, keeping 50px visible */
-    z-index: 900;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(-50%) translateX(calc(100% - 60px));
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     font-family: 'Inter', sans-serif;
     display: flex;
-    /* Side-by-side layout */
-    width: 300px;
-    /* Constant width */
+    width: 320px;
     overflow: hidden;
 }
 
 .weather-widget-container.open {
     transform: translateY(-50%) translateX(0);
-    /* Slide in to show everything */
 }
 
-/* Toggle is the "handle" on the left */
+/* Toggle Handle */
 .weather-toggle {
     display: flex;
     flex-direction: column;
-    /* Always vertical */
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    width: 50px;
-    /* Fixed width for the handle */
-    background: #eb1f25;
-    color: white;
+    gap: 8px;
+    width: 60px;
+    background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     padding: 20px 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease;
+}
+
+.weather-toggle:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.toggle-icon {
+    font-size: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.toggle-text {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    flex-shrink: 0;
-    /* Don't shrink */
-}
-
-.weather-icon {
-    font-size: 20px;
-    line-height: 1;
-    transform: rotate(90deg);
-    /* Fix icon rotation */
-    margin-bottom: 5px;
-}
-
-.weather-temp {
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-
-/* Content area on the right */
-.weather-content {
-    flex-grow: 1;
-    padding: 20px;
-    display: block;
-    /* Always display, visibility handled by slide */
-    opacity: 1;
-    /* Always visible */
-    pointer-events: auto;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     color: #333;
 }
 
-.weather-header {
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.weather-header h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    color: #1a1a1a;
-}
-
-.weather-desc {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-}
-
-.weather-details {
+/* Content Area */
+.weather-content {
+    flex: 1;
+    padding: 24px;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+/* Main Weather Info */
+.weather-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.weather-main-icon {
+    font-size: 48px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.weather-main-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-temp-big {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+    color: #1a1a1a;
+    letter-spacing: -1px;
+}
+
+.weather-location {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+/* Divider */
+.weather-divider {
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
+    width: 100%;
+}
+
+/* Grid Details */
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 }
 
-.weather-detail-item {
+.weather-item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    font-size: 15px;
-    padding: 4px 0;
+    text-align: center;
+    gap: 4px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.weather-detail-item span {
-    color: #666;
-}
-
-.weather-detail-item strong {
-    color: #333;
+.weather-item .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
     font-weight: 600;
 }
 
-/* Mobile adjustments */
+.weather-item .value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+}
+
+.weather-item .value small {
+    font-size: 10px;
+    font-weight: 500;
+    color: #666;
+    margin-left: 1px;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .weather-widget-container {
         top: auto;
-        bottom: 100px;
-        transform: translateX(calc(100% - 46px));
-        /* Adjust for mobile handle width */
-        width: 280px;
+        bottom: 15px;
+        right: 0;
+        transform: translateX(calc(100% - 40px));
+        width: 240px;
+        border-radius: 16px;
     }
 
     .weather-widget-container.open {
@@ -131,6 +161,54 @@
     }
 
     .weather-toggle {
-        width: 46px;
+        width: 40px;
+        padding: 10px 0;
+    }
+
+    .toggle-icon {
+        font-size: 18px;
+    }
+
+    .toggle-text {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .weather-content {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .weather-main {
+        gap: 10px;
+    }
+
+    .weather-main-icon {
+        font-size: 32px;
+    }
+
+    .weather-temp-big {
+        font-size: 28px;
+    }
+
+    .weather-location {
+        font-size: 12px;
+    }
+
+    .weather-grid {
+        gap: 8px;
+    }
+
+    .weather-item {
+        padding: 6px;
+        border-radius: 8px;
+    }
+
+    .weather-item .label {
+        font-size: 9px;
+    }
+
+    .weather-item .value {
+        font-size: 12px;
     }
 }

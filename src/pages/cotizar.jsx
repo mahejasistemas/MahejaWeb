@@ -18,11 +18,8 @@ export default function Cotizar() {
         // Step 2: Detalles de carga
         tipoCarga: '',
         peso: '',
-        dimensiones: {
-            largo: '',
-            ancho: '',
-            alto: ''
-        },
+        tipoUnidad: '',
+        metrosCubicos: '',
         valorMercancia: '',
         requiereSeguro: false,
 
@@ -87,7 +84,7 @@ export default function Cotizar() {
             tipo_servicio: servicios.find(s => s.id === formData.tipoServicio)?.title || formData.tipoServicio,
             tipo_carga: formData.tipoCarga,
             peso: formData.peso,
-            dimensiones: `${formData.dimensiones.largo}m x ${formData.dimensiones.ancho}m x ${formData.dimensiones.alto}m`,
+            dimensiones: `Tipo: ${formData.tipoUnidad} - Volumen: ${formData.metrosCubicos}m³`,
             valor_mercancia: formData.valorMercancia || 'No especificado',
             requiere_seguro: formData.requiereSeguro ? 'Sí' : 'No',
             origen: formData.origen,
@@ -121,7 +118,8 @@ export default function Cotizar() {
                 tipoServicio: '',
                 tipoCarga: '',
                 peso: '',
-                dimensiones: { largo: '', ancho: '', alto: '' },
+                tipoUnidad: '',
+                metrosCubicos: '',
                 valorMercancia: '',
                 requiereSeguro: false,
                 origen: '',
@@ -173,7 +171,7 @@ export default function Cotizar() {
             case 1:
                 return formData.tipoServicio !== '';
             case 2:
-                return formData.tipoCarga !== '' && formData.peso !== '';
+                return formData.tipoCarga !== '' && formData.peso !== '' && formData.tipoUnidad !== '' && formData.metrosCubicos !== '';
             case 3:
                 return formData.origen !== '' && formData.destino !== '' && formData.fechaRecogida !== '';
             case 4:
@@ -323,43 +321,31 @@ export default function Cotizar() {
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="dimensiones.largo">Largo (m)</label>
-                                    <input
-                                        type="number"
-                                        id="dimensiones.largo"
-                                        name="dimensiones.largo"
-                                        value={formData.dimensiones.largo}
+                                    <label htmlFor="tipoUnidad">Tipo de unidad</label>
+                                    <select
+                                        id="tipoUnidad"
+                                        name="tipoUnidad"
+                                        value={formData.tipoUnidad}
                                         onChange={handleInputChange}
-                                        placeholder="2.5"
-                                        step="0.1"
-                                        min="0"
-                                    />
+                                    >
+                                        <option value="">Selecciona el tipo</option>
+                                        <option value="Carga suelta">Carga suelta</option>
+                                        <option value="Sencillo">Sencillo</option>
+                                        <option value="Full">Full</option>
+                                        <option value="Contenedor 20">Contenedor 20</option>
+                                        <option value="Contenedor 40">Contenedor 40</option>
+                                    </select>
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="dimensiones.ancho">Ancho (m)</label>
+                                    <label htmlFor="metrosCubicos">Metros Cúbicos (m³)</label>
                                     <input
                                         type="number"
-                                        id="dimensiones.ancho"
-                                        name="dimensiones.ancho"
-                                        value={formData.dimensiones.ancho}
+                                        id="metrosCubicos"
+                                        name="metrosCubicos"
+                                        value={formData.metrosCubicos}
                                         onChange={handleInputChange}
-                                        placeholder="1.5"
-                                        step="0.1"
-                                        min="0"
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="dimensiones.alto">Alto (m)</label>
-                                    <input
-                                        type="number"
-                                        id="dimensiones.alto"
-                                        name="dimensiones.alto"
-                                        value={formData.dimensiones.alto}
-                                        onChange={handleInputChange}
-                                        placeholder="2.0"
-                                        step="0.1"
+                                        placeholder="Ej: 30"
                                         min="0"
                                     />
                                 </div>

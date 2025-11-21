@@ -271,6 +271,7 @@
 
     .hero__investors {
         max-width: 100%;
+        padding-left: 12px;
     }
 
     .hero__description-container {
@@ -293,6 +294,22 @@
     }
     .partner-logo {
         height: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero__investors {
+        max-width: 100%;
+    }
+    .hero__investor-logos {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+    .partner-logo {
+        height: 42px;
     }
 }
 
