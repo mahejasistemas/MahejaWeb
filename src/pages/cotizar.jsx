@@ -98,6 +98,7 @@ export default function Cotizar() {
             nombre_empresa: formData.nombreEmpresa || 'No especificada',
             nombre_contacto: formData.nombreContacto,
             email: formData.email,
+            reply_to: formData.email,
             telefono: formData.telefono,
             comentarios: formData.comentarios || 'Sin comentarios',
             cotizacion_estimada: `$${cotizacionEstimada.toLocaleString()} MXN`

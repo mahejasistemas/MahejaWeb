@@ -35,6 +35,7 @@ export default function ContactoPage() {
             to_emails: RECIPIENT_EMAILS.join(', '),
             nombre: formData.nombre,
             email: formData.email,
+            reply_to: formData.email,
             telefono: formData.telefono,
             empresa: formData.empresa || 'No especificada',
             servicio: formData.servicio,
