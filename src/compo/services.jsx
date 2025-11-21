@@ -88,7 +88,7 @@ export default function Services() {
                             <div className="service-content">
                                 <h3>{service.title}</h3>
                                 <p>{service.description}</p>
-                                <Link to="/cotizar" className="service-link">
+                                <Link to="/servicios" className="service-link">
                                     Cotizar ahora
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M5 12h14M12 5l7 7-7 7" />

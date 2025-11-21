@@ -26,7 +26,7 @@ export default function CTA() {
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </Link>
-                        <Link to="/servicios" className="btn-cta btn-secondary-cta">
+                        <Link to="/contacto" className="btn-cta btn-secondary-cta">
                             Contactar Ventas
                         </Link>
                     </div>

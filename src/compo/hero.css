@@ -90,14 +90,11 @@
 }
 
 .hero__investor-logos {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    font-size: 0.9rem;
-    font-weight: 600;
-    opacity: 0.9;
-    text-transform: uppercase;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
     align-items: center;
+    justify-items: center;
 }
 
 .hero__investor-logos span {
@@ -108,7 +105,8 @@
 }
 
 .partner-logo {
-    height: 40px;
+    height: 36px;
+    max-width: 100%;
     width: auto;
     object-fit: contain;
     filter: brightness(0) invert(1);
@@ -289,8 +287,12 @@
         /* Hide badge on mobile usually */
     }
 
+    .hero__investor-logos {
+        grid-template-columns: repeat(3, minmax(64px, 1fr));
+        gap: 0.75rem;
+    }
     .partner-logo {
-        height: 30px;
+        height: 28px;
     }
 }
 
@@ -312,7 +314,11 @@
         top: -10px;
     }
 
+    .hero__investor-logos {
+        grid-template-columns: repeat(2, minmax(56px, 1fr));
+        gap: 0.5rem;
+    }
     .partner-logo {
-        height: 25px;
+        height: 24px;
     }
 }
