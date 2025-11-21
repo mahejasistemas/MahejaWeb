@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './nav.css'
+import logo from '../assets/logo.svg'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -9,7 +10,7 @@ export default function Nav() {
     <nav className="navbar">
       <div className="navbar__container">
         <Link to="/" className="navbar__brand">
-          <img src="/src/assets/logo.svg" alt="Transportes Maheja" className="navbar__logo" />
+          <img src={logo} alt="Transportes Maheja" className="navbar__logo" />
         </Link>
 
         <button

@@ -1,5 +1,6 @@
 import React from 'react';
 import './footer.css';
+import logo from '../assets/logo.svg';
 
 export default function Footer() {
     return (
@@ -10,7 +11,7 @@ export default function Footer() {
                     <div className="footer-col brand-col">
                         <div className="footer-logo">
                             {/* Logo filter applied in CSS to make it white */}
-                            <img src="/src/assets/logo.svg" alt="Transportes Maheja" className="footer-logo-img" />
+                            <img src={logo} alt="Transportes Maheja" className="footer-logo-img" />
                             <span className="footer-brand-name">Transportes Maheja</span>
                         </div>
                         <p className="footer-description">

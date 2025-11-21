@@ -4,7 +4,7 @@ import fondo from '../assets/fondo.jpg';
 import wilmarLogo from '../assets/Img/wilmar.png';
 import zucarmexLogo from '../assets/Img/Zucarmex.png';
 import pacifexLogo from '../assets/Img/PACIFEX.png';
-import agrogen from '../assets/Img/agrogen.png';
+import agrogen from '../assets/Img/Agrogen.png';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Hero() {
