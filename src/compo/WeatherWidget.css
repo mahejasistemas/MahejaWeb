@@ -2,79 +2,54 @@
     position: fixed;
     top: 50%;
     right: 0;
-    transform: translateY(-50%);
+    transform: translateY(-50%) translateX(calc(100% - 50px));
+    /* Default closed state: shifted right, keeping 50px visible */
     z-index: 900;
-    background: #eb1f25;
-    /* Project red accent */
-    color: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-family: 'Inter', sans-serif;
-    cursor: pointer;
-}
-
-.weather-widget-container.closed {
-    width: 46px;
-    height: auto;
-    padding: 20px 0;
-}
-
-.weather-widget-container.closed:hover {
-    width: 52px;
-    /* Slight peek effect */
+    display: flex;
+    /* Side-by-side layout */
+    width: 300px;
+    /* Constant width */
+    overflow: hidden;
 }
 
 .weather-widget-container.open {
-    width: 280px;
-    height: auto;
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
-    border-radius: 10px 0 0 10px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translateY(-50%) translateX(0);
+    /* Slide in to show everything */
 }
 
+/* Toggle is the "handle" on the left */
 .weather-toggle {
     display: flex;
+    flex-direction: column;
+    /* Always vertical */
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 100%;
-    width: 100%;
-    transition: all 0.3s ease;
-}
-
-/* Vertical text for closed state */
-.weather-widget-container.closed .weather-toggle {
-    flex-direction: column;
+    width: 50px;
+    /* Fixed width for the handle */
+    background: #eb1f25;
+    color: white;
+    cursor: pointer;
+    padding: 20px 0;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    /* Fix rotation direction */
-    padding: 10px 0;
-    white-space: nowrap;
-}
-
-.weather-widget-container.open .weather-toggle {
-    flex-direction: row;
-    height: 50px;
-    padding: 0 20px;
-    background: #eb1f25;
-    color: white;
-    margin-bottom: 0;
+    flex-shrink: 0;
+    /* Don't shrink */
 }
 
 .weather-icon {
     font-size: 20px;
     line-height: 1;
-}
-
-.weather-widget-container.closed .weather-icon {
     transform: rotate(90deg);
-    /* Correct icon orientation in vertical mode */
+    /* Fix icon rotation */
     margin-bottom: 5px;
 }
 
@@ -84,20 +59,16 @@
     letter-spacing: 1px;
 }
 
+/* Content area on the right */
 .weather-content {
+    flex-grow: 1;
     padding: 20px;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    display: none;
-}
-
-.weather-widget-container.open .weather-content {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
     display: block;
+    /* Always display, visibility handled by slide */
+    opacity: 1;
+    /* Always visible */
+    pointer-events: auto;
+    color: #333;
 }
 
 .weather-header {
@@ -150,11 +121,16 @@
     .weather-widget-container {
         top: auto;
         bottom: 100px;
-        /* Move up a bit from bottom */
-        transform: none;
+        transform: translateX(calc(100% - 46px));
+        /* Adjust for mobile handle width */
+        width: 280px;
     }
 
     .weather-widget-container.open {
-        width: 260px;
+        transform: translateX(0);
+    }
+
+    .weather-toggle {
+        width: 46px;
     }
 }
