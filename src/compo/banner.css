@@ -19,8 +19,7 @@
     width: 110%;
     background: #eb1f25;
     color: white;
-    padding: 1rem 0;
-    /* Reduced padding for thinner look */
+    padding: clamp(0.75rem, 2vw, 1rem) 0;
     transform: translateY(-50%) rotate(-2deg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border-top: 2px solid white;
@@ -34,16 +33,14 @@
     display: flex;
     white-space: nowrap;
     animation: marquee 60s linear infinite;
-    /* Much slower animation */
 }
 
 .marquee-content span {
     font-family: 'Inter', sans-serif;
-    font-size: 2.5rem;
-    /* Smaller font size */
+    font-size: clamp(1.25rem, 4vw, 2.5rem);
     font-weight: 700;
     text-transform: uppercase;
-    padding-right: 4rem;
+    padding-right: clamp(2rem, 4vw, 4rem);
     letter-spacing: 0.05em;
 }
 
@@ -58,13 +55,33 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .marquee-banner {
+        transform: translateY(-50%) rotate(-1.5deg);
+    }
+}
+
 @media (max-width: 768px) {
     .marquee-banner {
         padding: 0.75rem 0;
+        transform: translateY(-50%) rotate(-1deg);
     }
 
     .marquee-content span {
         font-size: 1.5rem;
         padding-right: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .marquee-banner {
+        padding: 0.5rem 0;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+    }
+
+    .marquee-content span {
+        font-size: 1.25rem;
+        padding-right: 1.5rem;
     }
 }

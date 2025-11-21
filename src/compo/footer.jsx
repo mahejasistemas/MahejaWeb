@@ -34,10 +34,10 @@ export default function Footer() {
                     <div className="footer-col">
                         <h4 className="footer-heading">Servicios</h4>
                         <ul className="footer-links">
-                            <li><a href="#general">Carga General</a></li>
-                            <li><a href="#especializada">Carga Especializada</a></li>
-                            <li><a href="#logistica">Logística Integral</a></li>
-                            <li><a href="#maquinaria">Renta de Maquinaria</a></li>
+                            <li><a href="#servicios">Transporte Full</a></li>
+                            <li><a href="#servicios">Transporte Sencillo</a></li>
+                            <li><a href="#servicios">Tolvas</a></li>
+                            <li><a href="#servicios">Contenedores</a></li>
                         </ul>
                     </div>
 

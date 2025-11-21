@@ -1,59 +1,74 @@
 import React, { useState } from 'react';
 import './services.css';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Services() {
     const [activeService, setActiveService] = useState(0);
+    const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
 
     const services = [
         {
             id: "01",
-            title: "Carga General",
-            description: "Transporte seguro y eficiente para todo tipo de mercancías estándar. Flota moderna adaptada a tus necesidades de volumen.",
+            title: "Transporte Full",
+            description: "Servicio de transporte completo con vehículo exclusivo para su carga. Ideal para grandes volúmenes que requieren todo el espacio del camión.",
             icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
                 </svg>
             )
         },
         {
             id: "02",
-            title: "Transporte Especializado",
-            description: "Soluciones para carga sobredimensionada, materiales peligrosos o requerimientos específicos de temperatura.",
+            title: "Transporte Sencillo",
+            description: "Transporte compartido optimizado para cargas de menor volumen. Solución para rutas consolidadas y tiempos de entrega eficientes.",
             icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M14 9l-6 6"></path>
-                    <path d="M10 9l6 6"></path>
-                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M1 3h15v13H1z"></path>
+                    <path d="M16 8h4l3 3v5h-7V8z"></path>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    <path d="M5 6h6"></path>
+                    <path d="M8 9h3"></path>
                 </svg>
             )
         },
         {
             id: "03",
-            title: "Logística Integral",
-            description: "Gestión completa de la cadena de suministro, desde el almacenamiento hasta la distribución final.",
+            title: "Tolvas",
+            description: "Transporte especializado en tolvas para materiales a granel como arena, grava, cemento y otros materiales de construcción. Equipos modernos y seguros.",
             icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    <path d="M7 2l-2 8h14l-2-8z"></path>
+                    <path d="M5 10v3h14v-3"></path>
+                    <polygon points="16 13 20 13 23 16 23 19 16 19 16 13"></polygon>
+                    <circle cx="6" cy="20" r="2"></circle>
+                    <circle cx="18" cy="20" r="2"></circle>
                 </svg>
             )
         },
         {
             id: "04",
-            title: "Renta de Maquinaria",
-            description: "Disponibilidad de equipos pesados y maquinaria especializada para proyectos de construcción e industria.",
+            title: "Contenedores",
+            description: "Transporte de contenedores de 20 y 40 pies. Servicio especializado para carga contenerizada con equipos adecuados y personal capacitado.",
             icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    <rect x="2" y="4" width="20" height="12" rx="1"></rect>
+                    <line x1="6" y1="4" x2="6" y2="16"></line>
+                    <line x1="10" y1="4" x2="10" y2="16"></line>
+                    <line x1="14" y1="4" x2="14" y2="16"></line>
+                    <line x1="18" y1="4" x2="18" y2="16"></line>
+                    <circle cx="6" cy="19" r="2"></circle>
+                    <circle cx="18" cy="19" r="2"></circle>
                 </svg>
             )
         }
     ];
 
     return (
-        <section className="services-section" id="servicios">
+        <section className={`services-section scroll-reveal ${isVisible ? 'is-visible' : ''}`} id="servicios" ref={ref}>
             <div className="services-container">
                 <div className="services-header">
                     <span className="services-subtitle">Nuestras Soluciones</span>
@@ -72,7 +87,7 @@ export default function Services() {
                             <div className="service-content">
                                 <h3>{service.title}</h3>
                                 <p>{service.description}</p>
-                                <a href="#cotizar" className="service-link">
+                                <a href="/servicios" className="service-link">
                                     Cotizar ahora
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M5 12h14M12 5l7 7-7 7" />

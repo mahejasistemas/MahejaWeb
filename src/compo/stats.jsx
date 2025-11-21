@@ -1,30 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './stats.css';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Stats() {
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.2 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, []);
+    const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.2 });
 
     const statsData = [
         {

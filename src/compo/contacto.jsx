@@ -24,7 +24,8 @@ export default function Contacto() {
                                 </div>
                                 <div>
                                     <h3>Llámanos</h3>
-                                    <p>+52 (55) 1234-5678</p>
+                                    <p>229 125 5074 - Tráfico</p>
+                                    <p>229 438 8209 - Facturación y Cobranza</p>
                                 </div>
                             </div>
 
@@ -37,7 +38,8 @@ export default function Contacto() {
                                 </div>
                                 <div>
                                     <h3>Escríbenos</h3>
-                                    <p>contacto@transportesmaheja.com</p>
+                                    <p>gabriela.geronimo@transportesmaheja.com</p>
+                                    <p>facturacionmaheja@gmail.com</p>
                                 </div>
                             </div>
 
@@ -50,7 +52,7 @@ export default function Contacto() {
                                 </div>
                                 <div>
                                     <h3>Visítanos</h3>
-                                    <p>Av. Principal 123, Zona Industrial<br />Ciudad de México, México</p>
+                                    <p>: LIBRAMIENTO SANTA FE SAN JULIAN KM 3.7 <br />DELFINO VICTORIA SANTA FE CP 91690 VERACRUZ, VER</p>
                                 </div>
                             </div>
                         </div>
